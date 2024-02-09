@@ -54,7 +54,7 @@ namespace galil_driver {
     GSize BUFFER_LENGTH=32;
     GSize bytes_returned;
     char buffer[32];
-    std::string address("192.168.1.1");
+    std::string address("192.168.0.99");
     if( GOpen( address.c_str(), &connection ) == G_NO_ERROR ){
       RCLCPP_INFO(rclcpp::get_logger("GalilSystemHardwareInterface"), "Connection to Galil successful.");
     }
