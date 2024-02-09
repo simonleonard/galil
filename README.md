@@ -13,7 +13,7 @@ cd ~/ros/galil
 ### Run
 ```
 source install/setup.bash
-ros2 galil_driver view.launch.py
+ros2 launch galil_driver view.launch.py
 ```
 
 ### Stream positions
