@@ -1,0 +1,82 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://wiki.ros.org/xacro">
+
+  <xacro:macro name="galil">
+
+    <!-- links -  main serial chain -->
+    <link name="base_link"/>
+    <link name="insertion_link">
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 ${pi}"/>
+        <geometry>
+          <box size="1 1 1"/>
+	</geometry>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 ${pi}"/>
+        <geometry>
+          <box size="1 1 1"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <joint name="insertion_joint" type="prismatic">
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <axis xyz="0 0 1" />
+      <parent link="base_link" />
+      <child link="insertion_link" />
+      <limit lower="0" upper="100"
+             effort="100" velocity="10"/>
+    </joint>
+
+    <link name="template_horizontal">
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <box size="1 1 1"/>
+	</geometry>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <box size="1 1 1"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <joint name="template_horizontal_joint" type="prismatic">
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <axis xyz="0 0 1" />
+      <parent link="base_link" />
+      <child link="template_horizontal_link" />
+      <limit lower="0" upper="100"
+             effort="100" velocity="10"/>
+    </joint>
+    
+    <link name="template_verticalal">
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <box size="1 1 1"/>
+	</geometry>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <box size="1 1 1"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <joint name="template_vertical_joint" type="prismatic">
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <axis xyz="0 0 1" />
+      <parent link="template_horizontal_link" />
+      <child link="template_vertical_link" />
+      <limit lower="0" upper="100"
+             effort="100" velocity="10"/>
+    </joint>
+    
+  </xacro:macro>
+
+</robot>

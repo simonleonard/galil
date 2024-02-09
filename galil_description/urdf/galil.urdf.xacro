@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://wiki.ros.org/xacro" name="$(arg name)">
+
+   <xacro:include filename="$(find galil_description)/urdf/galil.xacro"/>
+   <xacro:include filename="$(find galil_description)/urdf/galil.ros2_control.xacro" />
+
+   <!-- create link fixed to the "world" -->
+   <link name="world" />
+
+   <xacro:galil>
+   </xacro:galil>
+   
+   <xacro:galil_ros2_control>
+   </xacro:galil_ros2_control>
+
+   <joint name="base_joint" type="fixed">
+    <parent link="world"/>
+    <child link="base_link" />
+  </joint>
+  
+</robot>

@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <xacro:macro name="galil_ros2_control">
+    <ros2_control name="galil" type="system">
+      <hardware>
+        <plugin>galil_driver/GalilSystemHardwareInterface</plugin>
+      </hardware>
+      
+      <joint name="insertion_joint">
+        <command_interface name="position">
+          <param name="min">0</param>
+          <param name="max">100</param>
+        </command_interface>
+        <command_interface name="velocity">
+          <param name="min">-10</param>
+          <param name="max">10</param>
+        </command_interface>
+        <state_interface name="position">
+          <param name="initial_value">0</param>
+        </state_interface>
+        <state_interface name="velocity"/>
+        <state_interface name="effort"/>
+      </joint>
+
+      <joint name="template_horizontal_joint">
+        <command_interface name="position">
+          <param name="min">0</param>
+          <param name="max">100</param>
+        </command_interface>
+        <command_interface name="velocity">
+          <param name="min">-10</param>
+          <param name="max">10</param>
+        </command_interface>
+        <state_interface name="position">
+          <param name="initial_value">0</param>
+        </state_interface>
+        <state_interface name="velocity"/>
+        <state_interface name="effort"/>
+      </joint>
+
+      <joint name="template_vertical_joint">
+        <command_interface name="position">
+          <param name="min">0</param>
+          <param name="max">100</param>
+        </command_interface>
+        <command_interface name="velocity">
+          <param name="min">-10</param>
+          <param name="max">10</param>
+        </command_interface>
+        <state_interface name="position">
+          <param name="initial_value">0</param>
+        </state_interface>
+        <state_interface name="velocity"/>
+        <state_interface name="effort"/>
+      </joint>
+
+    </ros2_control>
+
+  </xacro:macro>
+
+</robot>

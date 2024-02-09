@@ -1,0 +1,9 @@
+<library path="galil_driver_plugin">
+  <class name="galil_driver/GalilSystemHardwareInterface"
+         type="galil_driver::GalilSystemHardwareInterface"
+         base_class_type="hardware_interface::SystemInterface">
+    <description>
+		ROS2 Control System Driver for the Galil motion controllers.
+    </description>
+  </class>
+</library>
