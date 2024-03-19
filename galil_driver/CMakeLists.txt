@@ -49,29 +49,14 @@ ament_target_dependencies(
 )
 pluginlib_export_plugin_description_file(hardware_interface hardware_interface_plugin.xml)
 
-install(
-  TARGETS galil_driver_plugin
-  DESTINATION lib
-  )
-
-install(
-  DIRECTORY launch config
-  DESTINATION share/${PROJECT_NAME}
-)
-
-install(
-  DIRECTORY include
-  DESTINATION include
-  )
+install( TARGETS galil_driver_plugin DESTINATION lib )
+install( DIRECTORY launch config DESTINATION share/${PROJECT_NAME} )
+install( DIRECTORY include DESTINATION include )
 
 ## EXPORTS
-ament_export_include_directories(
-  include
-  )
+ament_export_include_directories(include)
 
-ament_export_libraries(
-  galil_driver_plugin
-  )
+ament_export_libraries( galil_driver_plugin )
 
 ament_export_dependencies(
   hardware_interface

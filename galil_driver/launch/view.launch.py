@@ -74,7 +74,7 @@ def generate_launch_description():
         package="controller_manager",
         executable="ros2_control_node",
         parameters=[robot_description, robot_controllers],
-        output="both",
+        output="screen",
     )
     robot_state_pub_node = Node(
         package="robot_state_publisher",
@@ -82,15 +82,23 @@ def generate_launch_description():
         output="both",
         parameters=[robot_description],
     )
+    joint_state_pub_node = Node(
+        package="joint_state_publisher_gui",
+        executable="joint_state_publisher_gui",
+        output="both",
+    )
     joint_state_broadcaster_spawner = Node(
         package="controller_manager",
         executable="spawner",
         arguments=["joint_state_broadcaster", "--controller-manager", "/controller_manager"],
+        output="screen",
     )
+    
     robot_controller_spawner = Node(
         package="controller_manager",
         executable="spawner",
-        arguments=["forward_position_controller", "--controller-manager", "/controller_manager"],
+        arguments=["position_trajectory", "--controller-manager", "/controller_manager"],
+        output="screen",
     )
     delay_robot_controller_spawner_after_joint_state_broadcaster_spawner = RegisterEventHandler(
         event_handler=OnProcessExit(
@@ -98,9 +106,16 @@ def generate_launch_description():
             on_exit=[robot_controller_spawner],
         )
     )
+    rviz2 = Node(
+        package="rviz2",
+        executable="rviz2",
+        output="screen",
+    )
     nodes = [
         control_node,
         robot_state_pub_node,
+        #joint_state_pub_node,
+        rviz2,
         joint_state_broadcaster_spawner,
         delay_robot_controller_spawner_after_joint_state_broadcaster_spawner,
     ]

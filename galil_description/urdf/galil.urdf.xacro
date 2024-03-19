@@ -9,7 +9,7 @@
 
    <xacro:galil>
    </xacro:galil>
-   
+
    <xacro:galil_ros2_control>
    </xacro:galil_ros2_control>
 

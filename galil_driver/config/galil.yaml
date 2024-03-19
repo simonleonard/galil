@@ -5,27 +5,27 @@ controller_manager:
     joint_state_broadcaster:
       type: joint_state_broadcaster/JointStateBroadcaster
 
-    forward_position_controller:
+    position:
       type: forward_command_controller/ForwardCommandController
 
-    joint_trajectory_position_controller:
+    position_trajectory:
       type: joint_trajectory_controller/JointTrajectoryController
 
-forward_position_controller:
+position:
   ros__parameters:
     joints:
+      - horizontal_joint
+      - vertical_joint
       - insertion_joint
-      - template_horizontal_joint
-      - template_vertical_joint
     interface_name: position
 
 
-joint_trajectory_position_controller:
+position_trajectory:
   ros__parameters:
     joints:
+      - horizontal_joint
+      - vertical_joint
       - insertion_joint
-      - template_horizontal_joint
-      - template_vertical_joint
 
     command_interfaces:
       - position
@@ -33,9 +33,10 @@ joint_trajectory_position_controller:
     state_interfaces:
       - position
 
-    action_monitor_rate: 20.0 # Defaults to 20
+    state_publish_rate: 10.0
+    action_monitor_rate: 10.0
 
-    allow_partial_joints_goal: false # Defaults to false
+    allow_partial_joints_goal: true
     open_loop_control: true
     allow_integration_in_goal_trajectories: true
     constraints:

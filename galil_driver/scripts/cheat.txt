@@ -1,0 +1,2 @@
+ros2 topic pub -1  /position_trajectory/joint_trajectory trajectory_msgs/msg/JointTrajectory '{ joint_names: ['vertical_joint'], points: [ {positions: [0.005]  } ]   }'
+

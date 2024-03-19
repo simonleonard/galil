@@ -43,6 +43,9 @@ namespace galil_driver{
     std::vector<double> hw_states_velocity_;
     std::vector<double> hw_states_effort_;
 
+    std::vector< char > channels;
+    std::map< char, double > gears;
+    
     GCon connection;
   };
 }
